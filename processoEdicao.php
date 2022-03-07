@@ -4,51 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <?php
-include_once ("conexao.php");
 
-$id = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
+    //Atualiza os dados informados no editarAluno.php no banco 
+    include_once ("conexao.php");
 
-$nome = filter_input(INPUT_POST, 'nome');
-$nome = htmlspecialchars($nome);
+    $id = filter_input(INPUT_POST,'id', FILTER_SANITIZE_NUMBER_INT);
 
-$idade = filter_input(INPUT_POST, 'idade');
-$idade = htmlspecialchars($idade);
+    $nome = filter_input(INPUT_POST, 'nome');
+    $nome = htmlspecialchars($nome);
 
-$cpf = filter_input(INPUT_POST, 'cpf');
-$cpf = htmlspecialchars($cpf);
+    $idade = filter_input(INPUT_POST, 'idade');
+    $idade = htmlspecialchars($idade);
 
-$mae = filter_input(INPUT_POST, 'mae');
-$mae = htmlspecialchars($mae);
+    $cpf = filter_input(INPUT_POST, 'cpf');
+    $cpf = htmlspecialchars($cpf);
 
-$pai = filter_input(INPUT_POST, 'pai');
-$pai = htmlspecialchars($pai);
+    $mae = filter_input(INPUT_POST, 'mae');
+    $mae = htmlspecialchars($mae);
 
-$endereco = filter_input(INPUT_POST, 'endereco');
-$endereco = htmlspecialchars($endereco);
+    $pai = filter_input(INPUT_POST, 'pai');
+    $pai = htmlspecialchars($pai);
 
-$telefone = filter_input(INPUT_POST, 'telefone');
-$telefone = htmlspecialchars($telefone);
+    $endereco = filter_input(INPUT_POST, 'endereco');
+    $endereco = htmlspecialchars($endereco);
 
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $telefone = filter_input(INPUT_POST, 'telefone');
+    $telefone = htmlspecialchars($telefone);
+
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
 
-$consultAlunos = "UPDATE aluno SET nome = '$nome', idade = '$idade', cpf = '$cpf', mae = '$mae', pai = '$pai', endereco = '$endereco', telefone = '$telefone', email = '$email', modificacao = NOW() WHERE id = '$id'";
+    $consultAlunos = "UPDATE aluno SET nome = '$nome', idade = '$idade', cpf = '$cpf', mae = '$mae', pai = '$pai', endereco = '$endereco', telefone = '$telefone', email = '$email', modificacao = NOW() WHERE id = '$id'";
 
-$dados= mysqli_query($conn,$consultAlunos);
+    $dados= mysqli_query($conn,$consultAlunos);
 
-if(mysqli_affected_rows($conn)){
-    echo "<p>Modificado com sucesso!</p>";
-} else{
-    echo "<p>Erro, tente novamente.</p>";
-}
-?>
-<div>
-    <a href="index.php">Voltar a página principal</a>
-</div>
+    if(mysqli_affected_rows($conn)){
+        ?> <p class="p-mensagens">Modificado com sucesso!</p> <?php
+    } else{
+        ?> <p class="p-mensagens">Erro, tente novamente.</p> <?php
+    }
+    ?>
+    <div>
+        <a href="index.php" class="botao">Voltar a página principal</a>
+    </div>
 </body>
 </html>
-<?php
 
