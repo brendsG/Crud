@@ -28,7 +28,11 @@ CREATE TABLE aluno (
 
 ## Utilização:
 Na página inicial encontra-se a listagem dos alunos cadastrados, suas respectivas informações e o botão de cadastrar um novo aluno. 
+
 Na página de cadastro será requisitado as informações do aluno, depois de preencher os dados, clicando em "Cadastrar" o aluno será adicionado ao banco de dados.
+
 Clicando no botão "Mais informações" irá para uma página onde exibe as informações do aluno selecionado e na mesma página tem a opções de editar aluno e excluir.
+
 Ao clicar em "Editar" irá para uma página onde será requisitado os dados para a edição
+
 Ao clicar em "Excluir" os dados do aluno será excluido 
